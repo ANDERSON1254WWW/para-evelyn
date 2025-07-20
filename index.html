@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Evelyn 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: red;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #message {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 2;
+    }
+
+    #phrase {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      color: white;
+      font-style: italic;
+      font-size: 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    #btn-music {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    #signature {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: 16px;
+      color: black;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Te amo Evelyn Quiroz 💖</div>
+  <div id="phrase">"No somos nada, pero sentimos todo, y eso dura más que cualquier relación"</div>
+
+  <button id="btn-music">▶️ Reproducir música</button>
+
+  <div id="signature">Atentamente: Anderson Bonilla</div>
+
+  <canvas id="canvas-heart"></canvas>
+  <audio id="audio" src="musica.mp3.mpeg" preload="auto"></audio>
+
+  <script src="animate-heart-canvas-browser.js"></script>
+  <script>
+    window.onload = () => {
+      new AnimateHeartCanvas(0, 10, 120, 180, 8, 30, "red");
+
+      const audio = document.getElementById("audio");
+      const btn = document.getElementById("btn-music");
+
+      btn.onclick = () => {
+        if (!audio.paused) return;
+
+        audio.play();
+        btn.innerHTML = "🎵 Música Reproduciendo";
+        btn.disabled = true;
+        btn.style.opacity = "0.5";
+        btn.style.cursor = "default";
+      };
+    };
+  </script>
+</body>
+</html>
